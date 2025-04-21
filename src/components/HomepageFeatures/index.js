@@ -1,43 +1,46 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import clsx from "clsx";
+import Heading from "@theme/Heading";
+import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: "Sencillo, como encender las luces",
+    Svg: require("@site/static/img/caract_lista/one.svg").default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        TrapFiles fue creado para ser fácil de instalar y usar. Con unos pocos
+        pasos, podrás tener tu sitio web en funcionamiento de manera rápida y
+        sin complicaciones.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: "Mantén la Mirada en lo Que Importa",
+    Svg: require("@site/static/img/caract_lista/dos.svg").default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        TrapFiles te permite concentrarte en lo esencial, mientras nos
+        encargamos del resto. Simplemente mueve tus archivos al directorio
+        correspondiente y deja que el sistema haga el trabajo por ti.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: "React: El Motor de la Noche",
+    Svg: require("@site/static/img/caract_lista/tres.svg").default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Haz que tu sitio cobre vida reutilizando React. Con TrapFiles,
+        personaliza y amplía tu sitio reutilizando elementos como el encabezado
+        y pie de página, manteniendo tu oficina digital lista para la acción.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx("col col--4")}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
