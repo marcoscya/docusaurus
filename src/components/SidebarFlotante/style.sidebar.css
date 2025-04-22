@@ -95,3 +95,30 @@
   transform: translateX(5px);
   text-decoration: none;
 }
+
+.dropdown-trigger {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+
+.dropdown-content {
+  margin-left: 15px;
+}
+
+.submenu-link {
+  font-size: 0.9em;
+  padding: 6px 15px;
+}
+
+.nav-dropdown {
+  margin: 2px 0;
+}

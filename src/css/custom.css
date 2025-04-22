@@ -29,3 +29,35 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Ocultar el sidebar */
+.theme-doc-sidebar-container {
+  display: none !important;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ajustar el contenido principal para ocupar todo el ancho */
+.main-wrapper {
+  width: 100% !important;
+  margin-left: 30px !important;
+}
+
+/* Ajustar la posición de la tabla de contenidos */
+.table-of-contents {
+  position: fixed;
+  right: 30px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.table-of-contents__wrapper {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
