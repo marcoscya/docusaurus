@@ -64,11 +64,26 @@ const config = {
           onUntruncatedBlogPosts: "warn",
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: ["./src/css/custom.css"],
         },
       }),
     ],
   ],
+
+  //Linea para mantener el sidebar
+  themes: [
+    [
+      "@docusaurus/theme-classic",
+      {
+        id: "floating-sidebar-theme",
+        customCss: [
+          require.resolve("./src/css/custom.css"),
+          require.resolve("./src/components/SidebarFlotante/style.sidebar.css"),
+        ],
+      },
+    ],
+  ],
+  clientModules: [require.resolve("./src/Root.js")],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -83,13 +98,6 @@ const config = {
           // src: "img/logo.svg",
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Tutorial",
-          },
-          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/facebook/docusaurus",
             label: "GitHub",

@@ -1,0 +1,97 @@
+.floating-sidebar {
+  position: fixed;
+  bottom: 20px; /* Cambiado de top a bottom */
+  left: 20px;
+  width: 50px; /* Tamaño inicial cuadrado */
+  height: 50px; /* Tamaño inicial cuadrado */
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border-radius: 10px;
+  border: 2px solid var(--ifm-color-primary);
+  overflow: hidden;
+}
+
+.floating-sidebar.expanded {
+  width: 250px;
+  height: calc(100vh - 100px);
+  bottom: 20px;
+}
+
+.toggle-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: var(--ifm-color-primary);
+  font-size: 24px;
+}
+
+.floating-sidebar.expanded .toggle-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  left: auto;
+  transform: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--ifm-color-primary);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 50px;
+}
+
+/* ... otros estilos ... */
+
+.sidebar-navigation {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-sidebar.expanded .sidebar-navigation {
+  opacity: 1;
+  visibility: visible;
+  padding: 20px;
+  margin-top: 6px; /* Aumentado para dar más espacio desde el botón */
+}
+
+.nav-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  margin-bottom: 5px;
+}
+
+.nav-link {
+  display: block;
+  padding: 8px 15px;
+  margin: 2px 0;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .nav-link {
+  background: rgba(36, 37, 38, 0.7);
+}
+
+.nav-link:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  transform: translateX(5px);
+  text-decoration: none;
+}
