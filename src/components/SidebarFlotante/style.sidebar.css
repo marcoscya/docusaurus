@@ -1,11 +1,10 @@
 .floating-sidebar {
   position: fixed;
-  bottom: 20px; /* Cambiado de top a bottom */
+  bottom: 20px;
   left: 20px;
-  width: 50px; /* Tamaño inicial cuadrado */
-  height: 50px; /* Tamaño inicial cuadrado */
+  width: 50px;
+  height: 50px;
   background: rgba(255, 255, 255, 0.95);
-
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   z-index: 1000;
@@ -40,8 +39,6 @@
   top: 10px;
   left: auto;
   transform: none;
-  width: 30px;
-  height: 30px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.95);
   border: 2px solid var(--ifm-color-primary);
@@ -50,28 +47,47 @@
   height: 50px;
 }
 
-/* ... otros estilos ... */
-
 .sidebar-navigation {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: calc(100% - 80px); /* Ajustado para el espacio del botón */
+  overflow-y: auto; /* Solo mantener el scroll aquí */
 }
 
 .floating-sidebar.expanded .sidebar-navigation {
   opacity: 1;
   visibility: visible;
   padding: 20px;
-  margin-top: 6px; /* Aumentado para dar más espacio desde el botón */
+  margin-top: 60px;
+}
+
+/* Estilizar la barra de scroll */
+.sidebar-navigation::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-primary);
+  border-radius: 4px;
 }
 
 .nav-title {
   font-size: 1.2em;
   font-weight: bold;
   color: var(--ifm-color-primary);
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  position: absolute;
+  top: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 0;
 }
 
 .nav-link {

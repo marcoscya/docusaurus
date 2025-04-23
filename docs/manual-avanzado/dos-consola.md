@@ -36,4 +36,4 @@ Además de mostrar mensajes, la consola puede interactuar con el depurador de Ja
 - Inspeccionar y modificar el estado de la página durante su ejecución.
 - Depurar interacciones y eventos complejos.
 
-**Esta pestaña es fundamental para desarrolladores y testers, ya que ofrece un entorno interactivo para entender el comportamiento de una página web y resolver problemas de forma eficiente**.
+_Esta pestaña es fundamental para desarrolladores y testers, ya que ofrece un entorno interactivo para entender el comportamiento de una página web y resolver problemas de forma eficiente_.

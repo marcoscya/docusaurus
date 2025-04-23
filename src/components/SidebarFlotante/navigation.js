@@ -8,30 +8,30 @@ export default function Navigation() {
 
   return (
     <div className="sidebar-navigation">
-      <div className="nav-title">Menú</div>
+      <div className="nav-title">Documentacion</div>
 
       <div className="nav-dropdown">
         <button
           className="nav-link dropdown-trigger"
           onClick={() => setIsTutorialOpen(!isTutorialOpen)}
         >
-          <span className="nav-text">Tutorial</span>
+          <span className="nav-text">Manual Inspector de Elementos</span>
           <span className="dropdown-icon">{isTutorialOpen ? "▼" : "▶"}</span>
         </button>
 
         {isTutorialOpen && (
           <div className="dropdown-content">
             <Link to="/docs/intro" className="nav-link submenu-link">
-              <span className="nav-text">Tutorial Intro</span>
+              <span className="nav-text">Manual Basico</span>
             </Link>
 
-            {/* Tutorial Basics Submenu */}
+            {/* Manual Avanzado Submenu */}
             <div className="nav-dropdown nested">
               <button
                 className="nav-link dropdown-trigger"
                 onClick={() => setIsBasicsOpen(!isBasicsOpen)}
               >
-                <span className="nav-text">Tutorial - Basics</span>
+                <span className="nav-text">Manual Avanzado</span>
                 <span className="dropdown-icon">
                   {isBasicsOpen ? "▼" : "▶"}
                 </span>
@@ -39,34 +39,64 @@ export default function Navigation() {
               {isBasicsOpen && (
                 <div className="dropdown-content nested">
                   <Link
-                    to="/docs/tutorial-basics/create-a-page"
+                    to="/docs/manual-avanzado/uno-elementos"
                     className="nav-link submenu-link"
                   >
-                    <span className="nav-text">Create a Page</span>
+                    <span className="nav-text">Elementos</span>
                   </Link>
                   <Link
-                    to="/docs/tutorial-basics/create-a-document"
+                    to="/docs/manual-avanzado/dos-consola"
                     className="nav-link submenu-link"
                   >
-                    <span className="nav-text">Create a Document</span>
+                    <span className="nav-text">Consola</span>
                   </Link>
                   <Link
-                    to="/docs/tutorial-basics/create-a-blog-post"
+                    to="/docs/manual-avanzado/tres-fuentes"
                     className="nav-link submenu-link"
                   >
-                    <span className="nav-text">Create a Blog Post</span>
+                    <span className="nav-text">Fuentes</span>
                   </Link>
                   <Link
-                    to="/docs/tutorial-basics/markdown-features"
+                    to="/docs/manual-avanzado/cuatro-red"
                     className="nav-link submenu-link"
                   >
-                    <span className="nav-text">Markdown Features</span>
+                    <span className="nav-text">Red</span>
                   </Link>
                   <Link
-                    to="/docs/tutorial-basics/deploy-your-site"
+                    to="/docs/manual-avanzado/cinco-rendimiento"
                     className="nav-link submenu-link"
                   >
-                    <span className="nav-text">Deploy Your Site</span>
+                    <span className="nav-text">Rendimiento</span>
+                  </Link>
+                  <Link
+                    to="/docs/manual-avanzado/seis-memoria"
+                    className="nav-link submenu-link"
+                  >
+                    <span className="nav-text">Memoria</span>
+                  </Link>
+                  <Link
+                    to="/docs/manual-avanzado/siete-aplicacion"
+                    className="nav-link submenu-link"
+                  >
+                    <span className="nav-text">Aplicación</span>
+                  </Link>
+                  <Link
+                    to="/docs/manual-avanzado/ocho-seguridad"
+                    className="nav-link submenu-link"
+                  >
+                    <span className="nav-text">Seguridad</span>
+                  </Link>
+                  <Link
+                    to="/docs/manual-avanzado/nueve-faro"
+                    className="nav-link submenu-link"
+                  >
+                    <span className="nav-text">Faro</span>
+                  </Link>
+                  <Link
+                    to="/docs/manual-avanzado/diez-grabar"
+                    className="nav-link submenu-link"
+                  >
+                    <span className="nav-text">Recorder</span>
                   </Link>
                 </div>
               )}
