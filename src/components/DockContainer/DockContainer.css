@@ -1,0 +1,161 @@
+/* Base Dock Container Styles */
+.dock-container {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 200px;
+  background: rgba(128, 90, 213, 0.5);
+  border-right: 3px solid #8c6bc7;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.dock-container:hover {
+  width: 15px;
+  background: rgba(128, 90, 213, 0.3);
+  box-shadow: 2px 0 10px rgba(128, 90, 213, 0.2);
+}
+
+.dock-container.active {
+  width: 250px;
+  height: 100vh;
+  top: 0;
+  transform: none;
+  background: rgba(128, 90, 213, 0.1);
+  box-shadow: 2px 0 15px rgba(128, 90, 213, 0.3);
+}
+
+/* Dock Indicator */
+.dock-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 50px;
+  background: #8c6bc7;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Button Container */
+.dock-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+}
+
+/* Minimize Button */
+.minimize-dock-button {
+  padding: 8px 16px;
+  background: rgba(128, 90, 213, 0.2);
+  border: 2px solid #8c6bc7;
+  border-radius: 8px;
+  color: #8c6bc7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.minimize-dock-button:hover {
+  background: rgba(128, 90, 213, 0.4);
+}
+
+/* Break Union Button */
+.break-dock-button {
+  padding: 8px 16px;
+  background: rgba(128, 90, 213, 0.2);
+  border: 2px solid #8c6bc7;
+  border-radius: 8px;
+  color: #8c6bc7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.break-dock-button:hover {
+  background: rgba(128, 90, 213, 0.4);
+}
+
+/* Docked Sidebar Styles */
+.floating-sidebar.docked {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100vh !important;
+  width: 250px !important;
+  transform: none !important;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  padding-top: 60px;
+}
+
+.floating-sidebar.docked .sidebar-navigation {
+  opacity: 1;
+  visibility: visible;
+  height: calc(100% - 80px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.floating-sidebar.docked .nav-title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.floating-sidebar.docked .toggle-button {
+  display: none;
+}
+
+/* Minimized States */
+.dock-container.minimized,
+.floating-sidebar.docked.minimized {
+  width: 30px !important;
+  overflow: hidden;
+}
+
+.minimized .dock-indicator,
+.minimized .dock-buttons,
+.minimized .sidebar-navigation {
+  display: none;
+}
+
+/* Dark Theme Styles */
+[data-theme="dark"] .dock-container {
+  background: rgba(147, 112, 219, 0.15);
+  border-right: 3px solid #9370db;
+}
+
+[data-theme="dark"] .dock-container:hover {
+  background: rgba(147, 112, 219, 0.25);
+  box-shadow: 2px 0 10px rgba(147, 112, 219, 0.2);
+}
+
+[data-theme="dark"] .dock-indicator {
+  background: #9370db;
+}
+
+[data-theme="dark"] .minimize-dock-button,
+[data-theme="dark"] .break-dock-button {
+  background: rgba(147, 112, 219, 0.2);
+  border-color: #9370db;
+  color: #9370db;
+}
+
+[data-theme="dark"] .minimize-dock-button:hover,
+[data-theme="dark"] .break-dock-button:hover {
+  background: rgba(147, 112, 219, 0.4);
+}

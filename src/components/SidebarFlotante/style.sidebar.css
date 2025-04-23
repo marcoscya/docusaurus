@@ -19,6 +19,13 @@
   bottom: 20px;
 }
 
+.floating-sidebar.docked {
+  position: fixed !important;
+  left: 0 !important;
+  transition: all 0.3s ease;
+  transform: none;
+}
+
 .toggle-button {
   position: absolute;
   left: 50%;
