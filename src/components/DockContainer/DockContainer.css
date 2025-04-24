@@ -6,25 +6,30 @@
   transform: translateY(-50%);
   width: 8px;
   height: 200px;
-  background: rgba(128, 90, 213, 0.5);
+  background: rgba(128, 90, 213, 0.8);
   border-right: 3px solid #8c6bc7;
   transition: all 0.3s ease;
   z-index: 998;
+  cursor: pointer;
 }
 
 .dock-container:hover {
   width: 15px;
-  background: rgba(128, 90, 213, 0.3);
-  box-shadow: 2px 0 10px rgba(128, 90, 213, 0.2);
+  background: rgba(128, 90, 213, 0.7);
+  box-shadow: 2px 0 10px rgba(128, 90, 213, 0.5);
 }
 
-.dock-container.active {
-  width: 250px;
-  height: 100vh;
-  top: 0;
+/* Estado abierto */
+.dock-container.open {
+  width: 300px;
+  height: 80vh;
+  top: calc(50% - 40vh);
   transform: none;
-  background: rgba(128, 90, 213, 0.1);
-  box-shadow: 2px 0 15px rgba(128, 90, 213, 0.3);
+  background: #fff !important;
+  box-shadow: 2px 0 15px rgba(128, 90, 213, 0.5);
+  cursor: default;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 /* Dock Indicator */
@@ -35,127 +40,313 @@
   transform: translate(-50%, -50%);
   width: 4px;
   height: 50px;
-  background: #8c6bc7;
+  background: #fff;
   border-radius: 2px;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
-/* Button Container */
-.dock-buttons {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 80%;
-}
-
-/* Minimize Button */
-.minimize-dock-button {
-  padding: 8px 16px;
-  background: rgba(128, 90, 213, 0.2);
-  border: 2px solid #8c6bc7;
-  border-radius: 8px;
-  color: #8c6bc7;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-
-.minimize-dock-button:hover {
-  background: rgba(128, 90, 213, 0.4);
-}
-
-/* Break Union Button */
-.break-dock-button {
-  padding: 8px 16px;
-  background: rgba(128, 90, 213, 0.2);
-  border: 2px solid #8c6bc7;
-  border-radius: 8px;
-  color: #8c6bc7;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-
-.break-dock-button:hover {
-  background: rgba(128, 90, 213, 0.4);
-}
-
-/* Docked Sidebar Styles */
-.floating-sidebar.docked {
-  position: fixed !important;
-  left: 0 !important;
-  top: 0 !important;
-  height: 100vh !important;
-  width: 250px !important;
-  transform: none !important;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  transition: all 0.3s ease;
-  padding-top: 60px;
-}
-
-.floating-sidebar.docked .sidebar-navigation {
-  opacity: 1;
-  visibility: visible;
-  height: calc(100% - 80px);
+/* Contenido del dock */
+.dock-content {
   padding: 20px;
+  height: 100%;
   overflow-y: auto;
+  padding-top: 60px; /* Aumentamos el padding superior para dejar espacio al botón */
+  color: #333; /* Color de texto más oscuro para mejor contraste */
 }
 
-.floating-sidebar.docked .nav-title {
-  position: fixed;
+.dock-content h3 {
+  color: #5a3a9b; /* Color más oscuro para los títulos */
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.dock-content-inner {
+  margin-top: 10px;
+}
+
+/* Botón de cerrar */
+.close-dock-button {
+  position: absolute;
   top: 20px;
-  left: 20px;
-  background: transparent;
-  margin: 0;
-  padding: 0;
+  right: 20px;
+  padding: 8px 16px;
+  background: rgba(128, 90, 213, 0.4); /* Más visible */
+  border: 2px solid #8c6bc7;
+  border-radius: 8px;
+  color: #5a3a9b; /* Texto blanco para mejor contraste */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  z-index: 1000; /* Aseguramos que esté por encima del contenido */
 }
 
-.floating-sidebar.docked .toggle-button {
-  display: none;
-}
-
-/* Minimized States */
-.dock-container.minimized,
-.floating-sidebar.docked.minimized {
-  width: 30px !important;
-  overflow: hidden;
-}
-
-.minimized .dock-indicator,
-.minimized .dock-buttons,
-.minimized .sidebar-navigation {
-  display: none;
+.close-dock-button:hover {
+  background: rgba(128, 90, 213, 0.6);
 }
 
 /* Dark Theme Styles */
 [data-theme="dark"] .dock-container {
-  background: rgba(147, 112, 219, 0.15);
+  background: rgba(147, 112, 219, 0.8);
   border-right: 3px solid #9370db;
 }
 
 [data-theme="dark"] .dock-container:hover {
-  background: rgba(147, 112, 219, 0.25);
-  box-shadow: 2px 0 10px rgba(147, 112, 219, 0.2);
+  background: rgba(147, 112, 219, 0.7);
+  box-shadow: 2px 0 10px rgba(147, 112, 219, 0.5);
 }
 
 [data-theme="dark"] .dock-indicator {
-  background: #9370db;
+  background: #ffffff;
+  opacity: 0.9;
 }
 
-[data-theme="dark"] .minimize-dock-button,
-[data-theme="dark"] .break-dock-button {
-  background: rgba(147, 112, 219, 0.2);
-  border-color: #9370db;
-  color: #9370db;
+[data-theme="dark"] .dock-content {
+  color: #e0e0e0; /* Color más claro para texto en modo oscuro */
 }
 
-[data-theme="dark"] .minimize-dock-button:hover,
-[data-theme="dark"] .break-dock-button:hover {
+[data-theme="dark"] .dock-content h3 {
+  color: #b69aed; /* Color más claro para títulos en modo oscuro */
+}
+
+[data-theme="dark"] .close-dock-button {
   background: rgba(147, 112, 219, 0.4);
+  border-color: #9370db;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .close-dock-button:hover {
+  background: rgba(147, 112, 219, 0.6);
+}
+
+/* Estilos de navegación para el dock */
+.dock-navigation {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.dock-navigation .nav-dropdown {
+  margin-bottom: 15px;
+}
+
+.dock-navigation .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 6px;
+  color: #5a3a9b; /* Color más oscuro para mejor contraste */
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dock-navigation .nav-link:hover {
+  background-color: rgba(128, 90, 213, 0.2); /* Más visible */
+  color: #4a2a8b; /* Más oscuro al pasar el mouse */
+}
+
+.dock-navigation .dropdown-trigger {
+  font-weight: 600;
+}
+
+.dock-navigation .dropdown-content {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.dock-navigation .dropdown-content.nested {
+  margin-left: 20px;
+}
+
+.dock-navigation .submenu-link {
+  padding-left: 15px;
+  font-size: 0.95em;
+}
+
+.dock-navigation .dropdown-icon {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+[data-theme="dark"] .dock-navigation .nav-link {
+  color: #b69aed; /* Color más claro para modo oscuro */
+}
+
+[data-theme="dark"] .dock-navigation .nav-link:hover {
+  background-color: rgba(147, 112, 219, 0.3);
+  color: #d0c0ff; /* Más claro al pasar el mouse en modo oscuro */
+}
+
+/* Estilos para la vista emergente del Manual Avanzado */
+.submenu-popup {
+  position: fixed;
+  left: 310px; /* Posicionado a la derecha del dock */
+  top: 140px;
+  width: 280px;
+  height: 60vh;
+  background: #fff; /* Fondo casi blanco para mejor legibilidad */
+  border: 2px solid #8c6bc7;
+  border-radius: 12px;
+  box-shadow: 2px 0 15px rgba(128, 90, 213, 0.5);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 997;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20px);
+}
+
+.submenu-popup.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.submenu-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 90, 213, 0.5);
+}
+
+.submenu-popup-title {
+  font-weight: bold;
+  color: #5a3a9b; /* Color más oscuro para mejor contraste */
+  font-size: 1.2em;
+}
+
+.submenu-popup-close {
+  background: none;
+  border: none;
+  color: #5a3a9b;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+.submenu-popup-close:hover {
+  color: #4a2a8b; /* Más oscuro al pasar el mouse */
+}
+
+.submenu-popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.submenu-popup-link {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #5a3a9b;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.submenu-popup-link:hover {
+  background-color: rgba(128, 90, 213, 0.2);
+  color: #4a2a8b;
+}
+
+[data-theme="dark"] .submenu-popup {
+  background: #2d2d3a; /* Fondo oscuro para modo oscuro */
+  border-color: #9370db;
+}
+
+[data-theme="dark"] .submenu-popup-title,
+[data-theme="dark"] .submenu-popup-close {
+  color: #b69aed;
+}
+
+[data-theme="dark"] .submenu-popup-close:hover {
+  color: #d0c0ff;
+}
+
+[data-theme="dark"] .submenu-popup-link {
+  color: #b69aed;
+}
+
+[data-theme="dark"] .submenu-popup-link:hover {
+  background-color: rgba(147, 112, 219, 0.3);
+  color: #d0c0ff;
+}
+
+/* Estilos para el botón Separar */
+.separate-button {
+  position: absolute;
+  top: 20px;
+  right: 100px; /* Posicionado a la izquierda del botón Cerrar */
+  padding: 8px 16px;
+  background: rgba(128, 90, 213, 0.4);
+  border: 2px solid #8c6bc7;
+  border-radius: 8px;
+  color: #5a3a9b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.separate-button:hover {
+  background: rgba(128, 90, 213, 0.6);
+}
+
+/* Estilos para el dock cuando tiene el sidebar acoplado */
+.dock-container.with-sidebar {
+  background: rgba(128, 90, 213, 0.9);
+}
+
+[data-theme="dark"] .separate-button {
+  background: rgba(147, 112, 219, 0.4);
+  border-color: #9370db;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .separate-button:hover {
+  background: rgba(147, 112, 219, 0.6);
+}
+
+/* Estilos para el dock cuando está minimizado después de separar */
+.dock-container.minimized-after-separation {
+  width: 8px;
+  height: 200px;
+  background: rgba(128, 90, 213, 0.8);
+  cursor: default; /* No permitir clic para abrir mientras está en este estado */
+  pointer-events: none; /* Desactivar interacciones temporalmente */
+}
+
+.dock-container.minimized-after-separation:hover {
+  width: 8px; /* Mantener el mismo ancho incluso al pasar el mouse */
+  background: rgba(128, 90, 213, 0.8);
+  box-shadow: none;
+}
+
+/* Indicador visual para el estado minimizado después de separación */
+.dock-container.minimized-after-separation .dock-indicator {
+  background: #ffffff;
+  height: 80px; /* Indicador más largo para mostrar estado especial */
+  opacity: 0.9;
+  pointer-events: none; /* Asegurar que no interfiera */
+}
+
+[data-theme="dark"] .dock-container.minimized-after-separation {
+  background: rgba(147, 112, 219, 0.8);
+}
+
+[data-theme="dark"] .dock-container.minimized-after-separation .dock-indicator {
+  background: #ffffff;
+  opacity: 0.9;
+}
+
+/* Clase para el sidebar después de separarse */
+.floating-sidebar.separated {
+  pointer-events: auto !important;
+  transition: none !important;
 }
